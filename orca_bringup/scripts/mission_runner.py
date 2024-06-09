@@ -67,16 +67,16 @@ go_home.poses.append(make_pose(x=0.0, y=0.0, z=-1.0))
 
 # Dive to 8m
 dive = FollowWaypoints.Goal()
-dive.poses.append(make_pose(x=0.0, y=0.0, z=-8.0))
+dive.poses.append(make_pose(x=13.0, y=13.0, z=-4.0))
 
 # Big loop, will eventually result in a loop closure
 delay_loop = FollowWaypoints.Goal()
-delay_loop.poses.append(make_pose(x=0.0, y=0.0, z=-7.0))
-for _ in range(2):
-    delay_loop.poses.append(make_pose(x=20.0, y=-13.0, z=-7.0))
+# delay_loop.poses.append(make_pose(x=0.0, y=0.0, z=-7.0))
+for _ in range(5):
+    delay_loop.poses.append(make_pose(x=3.0, y=1.0, z=-6.0))
     delay_loop.poses.append(make_pose(x=10.0, y=-23.0, z=-7.0))
     delay_loop.poses.append(make_pose(x=-10.0, y=-8.0, z=-7.0))
-    delay_loop.poses.append(make_pose(x=0.0, y=0.0, z=-7.0))
+    delay_loop.poses.append(make_pose(x=1.0, y=0.0, z=-7.0))
 
 
 # Send a goal to an action server and wait for the result.
