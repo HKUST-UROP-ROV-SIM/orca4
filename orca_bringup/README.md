@@ -7,6 +7,10 @@ Calls [bringup.py](launch/bringup.py).
 
 To see parameters: `ros2 launch --show-args orca_bringup sim_launch.py`
 
+The launch of ROV depends on the sub.parm.  
+For BlueROV2, it relies on [sub.parm](#~/home/orca4/ardupilot/Tools/autotest/default_params/sub.parm)  
+For BlueROV2 Heavy, it relies on [sub-6dof.parm](#~/home/orca4/ardupilot/Tools/autotest/default_params/sub-6dof.parm)
+
 ### [bringup.py](launch/bringup.py)
 
 Bring up all core ROV and AUV nodes, including ORB_SLAM2 and Nav2.
