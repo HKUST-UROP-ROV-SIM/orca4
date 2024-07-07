@@ -196,12 +196,28 @@ def generate_launch_description():
                 'voc_file': orb_voc_file,
             }],
             remappings=[
-                ('/image_left/image_color_rect', '/stereo_left'),
-                ('/image_right/image_color_rect', '/stereo_right'),
-                ('/camera/camera_info', '/stereo_right/camera_info'),
+                ('/image_left/image_color_rect', '/stereo_vertical_left'),
+                ('/image_right/image_color_rect', '/stereo_vertical_right'),
+                ('/camera/camera_info', '/stereo_vertical_right/camera_info'),
             ],
             condition=IfCondition(LaunchConfiguration('slam')),
         ),
+
+        # Node(
+        #     package='orb_slam2_ros',
+        #     executable='orb_slam2_ros_stereo',
+        #     output='screen',
+        #     name='orb_slam2_stereo_2',
+        #     parameters=[orca_params_file, {
+        #         'voc_file': orb_voc_file,
+        #     }],
+        #     remappings=[
+        #         ('/image_left/image_color_rect', '/stereo_horizontal_left'),
+        #         ('/image_right/image_color_rect', '/stereo_horizontal_right'),
+        #         ('/camera/camera_info', '/stereo_horizontal_right/camera_info'),
+        #     ],
+        #     condition=IfCondition(LaunchConfiguration('slam')),
+        # ),
 
         # Include the rest of Nav2
         IncludeLaunchDescription(
