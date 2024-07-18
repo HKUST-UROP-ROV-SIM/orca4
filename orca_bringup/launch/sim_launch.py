@@ -169,8 +169,7 @@ def generate_launch_description():
         Node(
             package='ros_gz_image',
             executable='image_bridge',
-            arguments=['stereo_vertical_left', 'stereo_vertical_right', 
-                       'stereo_horizontal_left', 'stereo_horizontal_right'],
+            arguments=['stereo_left', 'stereo_right'],
             output='screen',
         ),
 
@@ -178,66 +177,35 @@ def generate_launch_description():
         Node(
             package='orca_base',
             executable='camera_info_publisher',
-            name='vertical_left_info_publisher',
+            name='left_info_publisher',
             output='screen',
             parameters=[{
                 'camera_info_url': 'file://' + sim_left_ini,
-                'camera_name': 'stereo_vertical_left',
-                'frame_id': 'stereo_vertical_left_frame',
+                'camera_name': 'stereo_left',
+                'frame_id': 'stereo_left_frame',
                 'timer_period_ms': 50,
             }],
             remappings=[
-                ('/camera_info', '/stereo_vertical_left/camera_info'),
-            ],
-        ),
-
-        # Node(
-        #     package='orca_base',
-        #     executable='camera_info_publisher',
-        #     name='horizontal_left_info_publisher',
-        #     output='screen',
-        #     parameters=[{
-        #         'camera_info_url': 'file://' + sim_left_ini,
-        #         'camera_name': 'stereo_horizontal_left',
-        #         'frame_id': 'stereo_horizontal_left_frame',
-        #         'timer_period_ms': 50,
-        #     }],
-        #     remappings=[
-        #         ('/camera_info', '/stereo_horizontal_left/camera_info'),
-        #     ],
-        # ),
-
-        Node(
-            package='orca_base',
-            executable='camera_info_publisher',
-            name='vertical_right_info_publisher',
-            output='screen',
-            parameters=[{
-                'camera_info_url': 'file://' + sim_right_ini,
-                'camera_name': 'stereo_vertical_right',
-                'frame_id': 'stereo_vertical_right_frame',
-                'timer_period_ms': 50,
-            }],
-            remappings=[
-                ('/camera_info', '/stereo_vertical_right/camera_info'),
+                ('/camera_info', '/stereo_left/camera_info'),
             ],
         ),
 
         Node(
             package='orca_base',
             executable='camera_info_publisher',
-            name='horizontal_right_info_publisher',
+            name='right_info_publisher',
             output='screen',
             parameters=[{
                 'camera_info_url': 'file://' + sim_right_ini,
-                'camera_name': 'stereo_horizontal_right',
-                'frame_id': 'stereo_horizontal_right_frame',
+                'camera_name': 'stereo_right',
+                'frame_id': 'stereo_right_frame',
                 'timer_period_ms': 50,
             }],
             remappings=[
-                ('/camera_info', '/stereo_horizontal_right/camera_info'),
+                ('/camera_info', '/stereo_right/camera_info'),
             ],
         ),
+
 
         # Publish ground truth pose from Ignition Gazebo
         Node(
